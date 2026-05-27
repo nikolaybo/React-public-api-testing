@@ -1,0 +1,25 @@
+.indicator {
+  width: 12px;
+  height: 6px;
+  background-color: var(--mantine-color-gray-5);
+  border-radius: var(--mantine-radius-xl);
+  transition:
+    width 200ms ease,
+    background-color 200ms ease;
+}
+
+.indicator[data-active] {
+  width: 24px;
+  background-color: var(--mantine-color-blue-6);
+}
+
+.control {
+  transition:
+    background-color 200ms ease,
+    color 200ms ease;
+}
+
+.control:hover {
+  background-color: var(--mantine-color-blue-6);
+  color: var(--mantine-color-white);
+}

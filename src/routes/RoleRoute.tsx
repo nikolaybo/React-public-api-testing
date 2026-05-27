@@ -2,24 +2,23 @@ import { Navigate, Outlet } from "react-router";
 // import { useAuth } from "@/context/AuthContext";
 
 interface RoleRouteProps {
-    allowedRoles: string[];
+  allowedRoles: string[];
 }
 
 export default function RoleRoute({ allowedRoles }: RoleRouteProps) {
-    
-    // const { user, isAuthenticated, isLoading } = useAuth();
+  // const { user, isAuthenticated, isLoading } = useAuth();
 
-    // if (isLoading) {
-    //     return <div>Loading...</div>;
-    // }
+  // if (isLoading) {
+  //     return <div>Loading...</div>;
+  // }
 
-    // if (!isAuthenticated) {
-    //     return <Navigate to="/login" replace />;
-    // }
+  // if (!isAuthenticated) {
+  //     return <Navigate to="/login" replace />;
+  // }
 
-    // if (!user || !allowedRoles.includes(user.role)) {
-    //     return <Navigate to="/login" replace />; // or a "No Access" page
-    // }
+  // if (!user || !allowedRoles.includes(user.role)) {
+  //     return <Navigate to="/login" replace />; // or a "No Access" page
+  // }
 
-    return <Outlet />;
+  return <Outlet />;
 }

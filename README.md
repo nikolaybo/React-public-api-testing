@@ -20,7 +20,6 @@ This boilerplate follows a **feature-based and modular architecture** that promo
 - **Centralized routing**  
   All routing logic is centralized in `routes/` using React Router v7, supporting nested layouts, public and protected routes, role-based access control, and a clear separation between routing and UI.
 
-
 - **Reusable building blocks**  
   Shared components, hooks, and utilities are centralized to reduce duplication and improve consistency.
 
@@ -32,47 +31,9 @@ This boilerplate follows a **feature-based and modular architecture** that promo
 
 ---
 
-## 🚀 Getting Started
- 
- ### Create a new project in one command:
-  ```
-  npx degit Med-Ri/react-vite-ts-boilerplate my-new-project
-  ```
-
-  ```
-  cd my-new-project
-  ```
-
-  ```
-  npm install
-  ```
-
-  ```
-  npm run dev
-  ```
-
-
-The application will be available at: http://localhost:5173
-
-
----
-
-## ✅ Why Use This Boilerplate
-
-- ⚡ Fast development with Vite
-- 🧠 Clean and predictable project structure
-- ♻️ High reusability of components and hooks
-- 📦 Scalable for small to large applications
-- 🔒 Strong typing with TypeScript
-- 🧩 Easy to extend with new features
-- 🎯 Ideal for dashboards, admin panels, and SaaS frontends
-- 🛠 Clean foundation for long-term projects
-
----
-
 ## 📁 Project Structure
 
-````text
+```text
 /public
 /src
  ├── api/          # API request definitions (HTTP calls, endpoints)
@@ -94,3 +55,4 @@ The application will be available at: http://localhost:5173
  └── main.tsx      # Application entry point
 
  ---
+```

@@ -5,12 +5,14 @@ This folder contains all static assets used throughout the application.
 ## Structure
 
 ### `/icons`
+
 - **Purpose**: Store all icon files (SVG, PNG, etc.)
 - **Naming Convention**: Use kebab-case (e.g., `user-profile-icon.svg`)
 - **File Types**: `.svg`, `.png`, `.ico`
 - **Usage**: Import icons in components for UI elements
 
 ### `/images`
+
 - **Purpose**: Store all image files (photos, illustrations, backgrounds)
 - **Naming Convention**: Use kebab-case (e.g., `hero-banner.jpg`)
 - **File Types**: `.jpg`, `.jpeg`, `.png`, `.webp`, `.gif`
@@ -28,8 +30,8 @@ This folder contains all static assets used throughout the application.
 
 ```typescript
 // Importing an icon
-import UserIcon from '@/assets/icons/user-icon.svg';
+import UserIcon from "@/assets/icons/user-icon.svg";
 
 // Importing an image
-import HeroImage from '@/assets/images/hero-banner.jpg';
+import HeroImage from "@/assets/images/hero-banner.jpg";
 ```

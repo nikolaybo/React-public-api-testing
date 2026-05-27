@@ -5,6 +5,7 @@ This folder contains custom React hooks that encapsulate reusable stateful logic
 ## Purpose
 
 Custom hooks allow you to:
+
 - Extract component logic into reusable functions
 - Share stateful logic between components
 - Keep components clean and focused on rendering
@@ -18,24 +19,28 @@ Custom hooks allow you to:
 ## Common Hook Patterns
 
 ### State Management Hooks
+
 - `useLocalStorage` - Persist state to localStorage
 - `useSessionStorage` - Persist state to sessionStorage
 - `useToggle` - Toggle boolean state
 - `useCounter` - Counter state with increment/decrement
 
 ### API/Data Hooks
+
 - `useApi` - Generic API call hook
 - `useFetch` - Data fetching with loading/error states
 - `useMutation` - Handle POST/PUT/DELETE operations
 - `usePagination` - Pagination logic
 
 ### UI/Interaction Hooks
+
 - `useClickOutside` - Detect clicks outside element
 - `useDebounce` - Debounce values
 - `useThrottle` - Throttle function calls
 - `useMediaQuery` - Responsive design logic
 
 ### Authentication Hooks
+
 - `useAuth` - Authentication state and methods
 - `useRole` - User role management
 - `usePermissions` - Permission checking
@@ -44,7 +49,7 @@ Custom hooks allow you to:
 
 ```typescript
 // useExample.ts
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from "react";
 
 interface UseExampleReturn {
   data: any;
@@ -80,7 +85,7 @@ export const useExample = (param: string): UseExampleReturn => {
     data,
     loading,
     error,
-    refetch: fetchData
+    refetch: fetchData,
   };
 };
 ```
@@ -100,18 +105,18 @@ export const useExample = (param: string): UseExampleReturn => {
 
 ```typescript
 // useExample.test.ts
-import { renderHook, act } from '@testing-library/react';
-import { useExample } from './useExample';
+import { renderHook, act } from "@testing-library/react";
+import { useExample } from "./useExample";
 
-test('should fetch data successfully', async () => {
-  const { result } = renderHook(() => useExample('test-param'));
-  
+test("should fetch data successfully", async () => {
+  const { result } = renderHook(() => useExample("test-param"));
+
   expect(result.current.loading).toBe(true);
-  
+
   await act(async () => {
     // Wait for async operations
   });
-  
+
   expect(result.current.data).toBeDefined();
   expect(result.current.loading).toBe(false);
 });

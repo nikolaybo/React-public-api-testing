@@ -12,11 +12,13 @@ This folder contains TypeScript type definitions, interfaces, and type utilities
 ## File Organization
 
 ### `/common.ts`
+
 - **Purpose**: Common types used across multiple modules
 - **Examples**: API responses, pagination, common UI states
 - **Content**: Base interfaces, utility types, shared enums
 
 ### `/global.d.ts`
+
 - **Purpose**: Global type declarations and module augmentations
 - **Examples**: Window object extensions, module declarations
 - **Content**: Global interfaces, module declarations, ambient types
@@ -24,6 +26,7 @@ This folder contains TypeScript type definitions, interfaces, and type utilities
 ## Type Categories
 
 ### API Types
+
 ```typescript
 // API Response wrapper
 interface ApiResponse<T> {
@@ -38,11 +41,12 @@ interface PaginationParams {
   page: number;
   limit: number;
   sortBy?: string;
-  sortOrder?: 'asc' | 'desc';
+  sortOrder?: "asc" | "desc";
 }
 ```
 
 ### User/Auth Types
+
 ```typescript
 interface User {
   id: string;
@@ -55,17 +59,18 @@ interface User {
 }
 
 enum UserRole {
-  ADMIN = 'admin',
-  USER = 'user',
-  MODERATOR = 'moderator'
+  ADMIN = "admin",
+  USER = "user",
+  MODERATOR = "moderator",
 }
 ```
 
 ### Component Props Types
+
 ```typescript
 interface ButtonProps {
-  variant: 'primary' | 'secondary' | 'danger';
-  size: 'small' | 'medium' | 'large';
+  variant: "primary" | "secondary" | "danger";
+  size: "small" | "medium" | "large";
   disabled?: boolean;
   loading?: boolean;
   children: React.ReactNode;
@@ -74,6 +79,7 @@ interface ButtonProps {
 ```
 
 ### Form Types
+
 ```typescript
 interface LoginFormData {
   email: string;
@@ -136,7 +142,7 @@ export interface PaginationMeta {
   totalPages: number;
 }
 
-export type Status = 'idle' | 'loading' | 'success' | 'error';
+export type Status = "idle" | "loading" | "success" | "error";
 
 export interface ApiError {
   message: string;

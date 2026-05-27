@@ -28,6 +28,7 @@ module-name/
 ## Current Modules
 
 ### `/auth`
+
 - **Purpose**: Authentication and authorization functionality
 - **Components**: Login forms, registration forms, password reset
 - **Hooks**: useAuth, useLogin, useLogout
@@ -35,6 +36,7 @@ module-name/
 - **Types**: AuthUser, LoginCredentials, AuthResponse
 
 ### `/users`
+
 - **Purpose**: User management and profile functionality
 - **Components**: UserProfile, UserList, UserForm
 - **Hooks**: useUsers, useUserProfile, useUserUpdate
@@ -44,11 +46,13 @@ module-name/
 ## Module Development Guidelines
 
 ### 1. Self-Contained Modules
+
 - Each module should be as independent as possible
 - Minimize dependencies between modules
 - Use shared utilities from `/lib` and `/utils` when needed
 
 ### 2. Consistent File Organization
+
 ```typescript
 // types.ts - Module-specific types
 export interface User {
@@ -74,17 +78,20 @@ export const UserList: React.FC = () => {
 ```
 
 ### 3. Module Communication
+
 - Use shared context for cross-module communication
 - Implement event-based communication when needed
 - Avoid direct imports between modules
 
 ### 4. API Integration
+
 ```typescript
 // api/user.api.ts - Module-specific API calls
 export const userApi = {
-  getUsers: () => api.get('/users'),
+  getUsers: () => api.get("/users"),
   getUser: (id: string) => api.get(`/users/${id}`),
-  updateUser: (id: string, data: UserUpdateData) => api.put(`/users/${id}`, data)
+  updateUser: (id: string, data: UserUpdateData) =>
+    api.put(`/users/${id}`, data),
 };
 ```
 

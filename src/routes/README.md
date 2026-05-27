@@ -13,21 +13,25 @@ This folder contains all routing configuration and route protection components f
 ## File Structure
 
 ### `/AppRoutes.tsx`
+
 - **Purpose**: Main routing configuration and route definitions
 - **Content**: Route paths, components, and navigation structure
 - **Features**: Route nesting, lazy loading, route guards
 
 ### `/ProtectedRoute.tsx`
+
 - **Purpose**: Route wrapper for authenticated users only
 - **Content**: Authentication check and redirect logic
 - **Usage**: Wrap routes that require user login
 
 ### `/PublicRoute.tsx`
+
 - **Purpose**: Route wrapper for public access
 - **Content**: Redirect logic for already authenticated users
 - **Usage**: Wrap routes accessible without login
 
 ### `/RoleRoute.tsx`
+
 - **Purpose**: Route wrapper for role-based access control
 - **Content**: Role checking and permission validation
 - **Usage**: Wrap routes that require specific user roles
@@ -35,6 +39,7 @@ This folder contains all routing configuration and route protection components f
 ## Route Configuration
 
 ### Basic Route Structure
+
 ```typescript
 // AppRoutes.tsx
 import { createBrowserRouter } from 'react-router-dom';
@@ -71,6 +76,7 @@ export const router = createBrowserRouter([
 ### Route Protection Components
 
 #### ProtectedRoute
+
 ```typescript
 // ProtectedRoute.tsx
 import { Navigate, useLocation } from 'react-router-dom';
@@ -83,20 +89,21 @@ interface ProtectedRouteProps {
 export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
   const { isAuthenticated, isLoading } = useAuth();
   const location = useLocation();
-  
+
   if (isLoading) {
     return <div>Loading...</div>;
   }
-  
+
   if (!isAuthenticated) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
-  
+
   return <>{children}</>;
 };
 ```
 
 #### PublicRoute
+
 ```typescript
 // PublicRoute.tsx
 import { Navigate } from 'react-router-dom';
@@ -108,16 +115,17 @@ interface PublicRouteProps {
 
 export const PublicRoute: React.FC<PublicRouteProps> = ({ children }) => {
   const { isAuthenticated } = useAuth();
-  
+
   if (isAuthenticated) {
     return <Navigate to="/dashboard" replace />;
   }
-  
+
   return <>{children}</>;
 };
 ```
 
 #### RoleRoute
+
 ```typescript
 // RoleRoute.tsx
 import { Navigate } from 'react-router-dom';
@@ -129,20 +137,20 @@ interface RoleRouteProps {
   allowedRoles: string[];
 }
 
-export const RoleRoute: React.FC<RoleRouteProps> = ({ 
-  children, 
-  allowedRoles 
+export const RoleRoute: React.FC<RoleRouteProps> = ({
+  children,
+  allowedRoles
 }) => {
   const { user } = useAuth();
-  
+
   if (!user) {
     return <Navigate to="/login" replace />;
   }
-  
+
   if (!allowedRoles.includes(user.role)) {
     return <UnauthorizedPage />;
   }
-  
+
   return <>{children}</>;
 };
 ```
@@ -152,24 +160,28 @@ export const RoleRoute: React.FC<RoleRouteProps> = ({
 ### Route Categories
 
 #### Public Routes
+
 - Landing page
 - Authentication pages (login, register, forgot password)
 - Information pages (about, contact, privacy)
 - Error pages (404, 500)
 
 #### Protected Routes
+
 - Dashboard and main application
 - User profile and settings
 - Feature-specific pages
 - User-generated content
 
 #### Admin Routes
+
 - User management
 - System administration
 - Reports and analytics
 - Configuration settings
 
 ### Nested Routes
+
 ```typescript
 // Nested route structure
 {
@@ -195,16 +207,19 @@ export const RoleRoute: React.FC<RoleRouteProps> = ({
 ## Route Guards and Middleware
 
 ### Authentication Guard
+
 - Check if user is authenticated
 - Redirect to login if not authenticated
 - Preserve intended destination
 
 ### Authorization Guard
+
 - Check user permissions and roles
 - Redirect to unauthorized page if insufficient permissions
 - Log access attempts for security
 
 ### Route Validation
+
 - Validate route parameters
 - Check route accessibility
 - Handle invalid routes gracefully
@@ -234,7 +249,7 @@ const UserProfilePage = () => {
   const { userId } = useParams<{ userId: string }>();
   const [searchParams] = useSearchParams();
   const tab = searchParams.get('tab');
-  
+
   return <div>User: {userId}, Tab: {tab}</div>;
 };
 ```
@@ -243,15 +258,15 @@ const UserProfilePage = () => {
 
 ```typescript
 // Navigation helper functions
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const useNavigation = () => {
   const navigate = useNavigate();
-  
-  const goToLogin = () => navigate('/login');
-  const goToDashboard = () => navigate('/dashboard');
+
+  const goToLogin = () => navigate("/login");
+  const goToDashboard = () => navigate("/dashboard");
   const goBack = () => navigate(-1);
-  
+
   return { goToLogin, goToDashboard, goBack };
 };
 ```
