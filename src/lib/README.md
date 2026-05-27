@@ -12,16 +12,19 @@ This folder contains library configurations, constants, and utility functions th
 ## File Structure
 
 ### `/constants.ts`
+
 - **Purpose**: Application-wide constants and configuration values
 - **Content**: API endpoints, default values, configuration settings
 - **Examples**: API_BASE_URL, DEFAULT_PAGE_SIZE, THEME_COLORS
 
 ### `/roles.ts`
+
 - **Purpose**: User role definitions and permissions
 - **Content**: Role enums, permission mappings, access control logic
 - **Examples**: ADMIN, USER, MODERATOR roles and their permissions
 
 ### `/secureStorage.ts`
+
 - **Purpose**: Secure storage utilities for sensitive data
 - **Content**: Encrypted storage functions, token management
 - **Examples**: Store/retrieve JWT tokens, user preferences securely
@@ -32,39 +35,39 @@ This folder contains library configurations, constants, and utility functions th
 // constants.ts
 export const API_ENDPOINTS = {
   AUTH: {
-    LOGIN: '/auth/login',
-    REGISTER: '/auth/register',
-    REFRESH: '/auth/refresh',
-    LOGOUT: '/auth/logout'
+    LOGIN: "/auth/login",
+    REGISTER: "/auth/register",
+    REFRESH: "/auth/refresh",
+    LOGOUT: "/auth/logout",
   },
   USERS: {
-    BASE: '/users',
-    PROFILE: '/users/profile',
-    AVATAR: '/users/avatar'
-  }
+    BASE: "/users",
+    PROFILE: "/users/profile",
+    AVATAR: "/users/avatar",
+  },
 } as const;
 
 export const DEFAULT_CONFIG = {
   PAGE_SIZE: 10,
   DEBOUNCE_DELAY: 300,
   TOKEN_EXPIRY: 24 * 60 * 60 * 1000, // 24 hours
-  MAX_FILE_SIZE: 5 * 1024 * 1024 // 5MB
+  MAX_FILE_SIZE: 5 * 1024 * 1024, // 5MB
 } as const;
 
 export const THEME = {
   COLORS: {
-    PRIMARY: '#3b82f6',
-    SECONDARY: '#64748b',
-    SUCCESS: '#10b981',
-    ERROR: '#ef4444',
-    WARNING: '#f59e0b'
+    PRIMARY: "#3b82f6",
+    SECONDARY: "#64748b",
+    SUCCESS: "#10b981",
+    ERROR: "#ef4444",
+    WARNING: "#f59e0b",
   },
   BREAKPOINTS: {
-    SM: '640px',
-    MD: '768px',
-    LG: '1024px',
-    XL: '1280px'
-  }
+    SM: "640px",
+    MD: "768px",
+    LG: "1024px",
+    XL: "1280px",
+  },
 } as const;
 ```
 
@@ -73,31 +76,27 @@ export const THEME = {
 ```typescript
 // roles.ts
 export enum UserRole {
-  ADMIN = 'admin',
-  USER = 'user',
-  MODERATOR = 'moderator'
+  ADMIN = "admin",
+  USER = "user",
+  MODERATOR = "moderator",
 }
 
 export const ROLE_PERMISSIONS = {
   [UserRole.ADMIN]: [
-    'users:read',
-    'users:write',
-    'users:delete',
-    'settings:read',
-    'settings:write'
+    "users:read",
+    "users:write",
+    "users:delete",
+    "settings:read",
+    "settings:write",
   ],
-  [UserRole.USER]: [
-    'profile:read',
-    'profile:write'
-  ],
-  [UserRole.MODERATOR]: [
-    'users:read',
-    'users:write',
-    'content:moderate'
-  ]
+  [UserRole.USER]: ["profile:read", "profile:write"],
+  [UserRole.MODERATOR]: ["users:read", "users:write", "content:moderate"],
 } as const;
 
-export const hasPermission = (userRole: UserRole, permission: string): boolean => {
+export const hasPermission = (
+  userRole: UserRole,
+  permission: string,
+): boolean => {
   return ROLE_PERMISSIONS[userRole]?.includes(permission) || false;
 };
 ```
@@ -122,7 +121,7 @@ export class SecureStorage {
       const encryptedValue = this.encrypt(JSON.stringify(value));
       localStorage.setItem(key, encryptedValue);
     } catch (error) {
-      console.error('Failed to store data securely:', error);
+      console.error("Failed to store data securely:", error);
     }
   }
 
@@ -130,11 +129,11 @@ export class SecureStorage {
     try {
       const encryptedValue = localStorage.getItem(key);
       if (!encryptedValue) return null;
-      
+
       const decryptedValue = this.decrypt(encryptedValue);
       return JSON.parse(decryptedValue);
     } catch (error) {
-      console.error('Failed to retrieve data securely:', error);
+      console.error("Failed to retrieve data securely:", error);
       return null;
     }
   }
@@ -159,24 +158,24 @@ export class SecureStorage {
 
 ```typescript
 // Using constants in components
-import { API_ENDPOINTS, DEFAULT_CONFIG } from '@/lib/constants';
-import { UserRole, hasPermission } from '@/lib/roles';
-import { SecureStorage } from '@/lib/secureStorage';
+import { API_ENDPOINTS, DEFAULT_CONFIG } from "@/lib/constants";
+import { UserRole, hasPermission } from "@/lib/roles";
+import { SecureStorage } from "@/lib/secureStorage";
 
 // API calls
 const response = await fetch(`${API_ENDPOINTS.AUTH.LOGIN}`, {
-  method: 'POST',
-  body: JSON.stringify(credentials)
+  method: "POST",
+  body: JSON.stringify(credentials),
 });
 
 // Role checking
-if (hasPermission(userRole, 'users:write')) {
+if (hasPermission(userRole, "users:write")) {
   // Show edit button
 }
 
 // Secure storage
-SecureStorage.setItem('authToken', token);
-const storedToken = SecureStorage.getItem<string>('authToken');
+SecureStorage.setItem("authToken", token);
+const storedToken = SecureStorage.getItem<string>("authToken");
 ```
 
 ## Configuration Management
@@ -184,9 +183,9 @@ const storedToken = SecureStorage.getItem<string>('authToken');
 ```typescript
 // Environment-based configuration
 export const config = {
-  apiBaseUrl: import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000',
+  apiBaseUrl: import.meta.env.VITE_API_BASE_URL || "http://localhost:3000",
   environment: import.meta.env.MODE,
   isDevelopment: import.meta.env.DEV,
-  isProduction: import.meta.env.PROD
+  isProduction: import.meta.env.PROD,
 } as const;
 ```

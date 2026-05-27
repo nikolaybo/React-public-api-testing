@@ -13,6 +13,7 @@ This module handles all authentication and authorization functionality in the ap
 ## Structure
 
 ### `/components`
+
 - **LoginForm**: User login form with validation
 - **RegisterForm**: User registration form
 - **ForgotPasswordForm**: Password reset request form
@@ -20,6 +21,7 @@ This module handles all authentication and authorization functionality in the ap
 - **AuthGuard**: Component wrapper for protected routes
 
 ### `/hooks`
+
 - **useAuth**: Main authentication hook
 - **useLogin**: Login functionality hook
 - **useLogout**: Logout functionality hook
@@ -27,6 +29,7 @@ This module handles all authentication and authorization functionality in the ap
 - **usePasswordReset**: Password reset functionality hook
 
 ### `/pages`
+
 - **LoginPage**: Login page component
 - **RegisterPage**: Registration page component
 - **ForgotPasswordPage**: Forgot password page
@@ -34,6 +37,7 @@ This module handles all authentication and authorization functionality in the ap
 - **UnauthorizedPage**: Access denied page
 
 ### `/types.ts`
+
 - **AuthUser**: User data structure
 - **LoginCredentials**: Login form data
 - **RegisterData**: Registration form data
@@ -43,16 +47,17 @@ This module handles all authentication and authorization functionality in the ap
 ## Usage Examples
 
 ### Using Auth Hook
+
 ```typescript
 import { useAuth } from '@/modules/auth/hooks/useAuth';
 
 const UserProfile = () => {
   const { user, isAuthenticated, login, logout } = useAuth();
-  
+
   if (!isAuthenticated) {
     return <div>Please log in</div>;
   }
-  
+
   return (
     <div>
       <h1>Welcome, {user?.name}</h1>
@@ -63,6 +68,7 @@ const UserProfile = () => {
 ```
 
 ### Using Login Form
+
 ```typescript
 import { LoginForm } from '@/modules/auth/components/LoginForm';
 
@@ -77,6 +83,7 @@ const LoginPage = () => {
 ```
 
 ### Protected Routes
+
 ```typescript
 import { AuthGuard } from '@/modules/auth/components/AuthGuard';
 
@@ -92,6 +99,7 @@ const ProtectedPage = () => {
 ## API Integration
 
 The auth module integrates with the following API endpoints:
+
 - `POST /auth/login` - User login
 - `POST /auth/register` - User registration
 - `POST /auth/logout` - User logout
@@ -102,6 +110,7 @@ The auth module integrates with the following API endpoints:
 ## State Management
 
 The auth module uses React Context for state management:
+
 - User authentication state
 - Loading states for async operations
 - Error states and messages
@@ -118,6 +127,7 @@ The auth module uses React Context for state management:
 ## Testing
 
 Each component and hook should have comprehensive tests:
+
 - Unit tests for individual components
 - Integration tests for auth flows
 - Mock API responses

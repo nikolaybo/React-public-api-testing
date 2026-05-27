@@ -12,16 +12,19 @@ This folder contains all API-related files for making HTTP requests to the backe
 ## File Structure
 
 ### `/axiosInstance.ts`
+
 - **Purpose**: Axios configuration and global interceptors
 - **Content**: Base URL, timeout, request/response interceptors
 - **Features**: Token attachment, error handling, loading states
 
 ### `/auth.api.ts`
+
 - **Purpose**: Authentication-related API calls
 - **Examples**: login, register, logout, refresh token, password reset
 - **Returns**: Typed responses for auth operations
 
 ### `/users.api.ts`
+
 - **Purpose**: User management API calls
 - **Examples**: get users, create user, update profile, delete user
 - **Returns**: Typed user data and responses
@@ -30,12 +33,14 @@ This folder contains all API-related files for making HTTP requests to the backe
 
 ```typescript
 // Example API function
-export const login = async (credentials: LoginCredentials): Promise<AuthResponse> => {
+export const login = async (
+  credentials: LoginCredentials,
+): Promise<AuthResponse> => {
   try {
-    const response = await axiosInstance.post('/auth/login', credentials);
+    const response = await axiosInstance.post("/auth/login", credentials);
     return response.data;
   } catch (error) {
-    throw new ApiError(error.response?.data?.message || 'Login failed');
+    throw new ApiError(error.response?.data?.message || "Login failed");
   }
 };
 ```
@@ -54,8 +59,8 @@ export const login = async (credentials: LoginCredentials): Promise<AuthResponse
 
 ```typescript
 // In components or services
-import { login, register } from '@/api/auth.api';
-import { getUsers, updateUser } from '@/api/users.api';
+import { login, register } from "@/api/auth.api";
+import { getUsers, updateUser } from "@/api/users.api";
 
 // Authentication
 const handleLogin = async (credentials) => {
@@ -86,10 +91,10 @@ export class ApiError extends Error {
   constructor(
     message: string,
     public status?: number,
-    public code?: string
+    public code?: string,
   ) {
     super(message);
-    this.name = 'ApiError';
+    this.name = "ApiError";
   }
 }
 ```

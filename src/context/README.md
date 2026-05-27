@@ -12,6 +12,7 @@ This folder contains React Context providers for global state management and dat
 ## File Structure
 
 ### `/AuthContext.tsx`
+
 - **Purpose**: Authentication state management
 - **State**: User authentication status, user data, tokens
 - **Methods**: Login, logout, token refresh, role management
@@ -53,22 +54,26 @@ export const useAuth = () => {
 ## Common Context Types
 
 ### Authentication Context
+
 - User authentication state
 - Login/logout functionality
 - Token management
 - Role-based access control
 
 ### Theme Context
+
 - Dark/light mode toggle
 - Theme preferences
 - Custom theme configurations
 
 ### Notification Context
+
 - Global notification state
 - Toast messages
 - Alert management
 
 ### Loading Context
+
 - Global loading states
 - Spinner management
 - Progress indicators
@@ -108,11 +113,11 @@ import { useAuth } from '@/context/AuthContext';
 
 const UserProfile: React.FC = () => {
   const { user, isAuthenticated, logout } = useAuth();
-  
+
   if (!isAuthenticated) {
     return <div>Please log in</div>;
   }
-  
+
   return (
     <div>
       <h1>Welcome, {user?.name}</h1>

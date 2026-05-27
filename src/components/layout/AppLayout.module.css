@@ -1,0 +1,42 @@
+.shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--mantine-color-gray-0);
+}
+
+.header {
+  height: 56px;
+  background: var(--mantine-color-gray-2);
+  border-bottom: 1px solid var(--mantine-color-blue-3);
+}
+
+.footer {
+  background: var(--mantine-color-gray-2);
+  padding: var(--mantine-spacing-md);
+  border-top: 1px solid var(--mantine-color-blue-3);
+  margin-top: auto;
+}
+
+.link {
+  display: block;
+  padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm);
+  border-radius: var(--mantine-radius-sm);
+  color: var(--mantine-color-blue-9);
+  font-size: var(--mantine-font-size-sm);
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none;
+  transition:
+    background-color 500ms,
+    color 500ms;
+}
+
+.link:hover {
+  background: var(--mantine-color-blue-1);
+}
+
+.link[data-active] {
+  color: var(--mantine-color-blue-6);
+  background: var(--mantine-color-blue-1);
+}
