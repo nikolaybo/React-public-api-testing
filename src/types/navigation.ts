@@ -19,3 +19,9 @@ export interface NavLinkItem {
 export interface NavLinkNode extends NavLinkItem {
   children: NavLinkItem[];
 }
+
+// Prop shapes for route-guard components in `src/routes/*`. Routes are part of
+// navigation, so their guard-prop types live here rather than in a separate file.
+export interface RoleRouteProps {
+  allowedRoles: string[];
+}
