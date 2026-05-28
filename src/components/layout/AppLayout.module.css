@@ -33,10 +33,7 @@
   display: block;
   padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm);
   border-radius: var(--mantine-radius-sm);
-  color: light-dark(
-    var(--mantine-color-blue-9),
-    var(--mantine-color-blue-2)
-  );
+  color: light-dark(var(--mantine-color-blue-9), #fff);
   font-size: var(--mantine-font-size-sm);
   font-weight: 500;
   line-height: 1;
@@ -54,10 +51,7 @@
 }
 
 .link[data-active] {
-  color: light-dark(
-    var(--mantine-color-blue-6),
-    var(--mantine-color-blue-3)
-  );
+  color: light-dark(var(--mantine-color-blue-6), #fff);
   background: light-dark(
     var(--mantine-color-blue-1),
     var(--mantine-color-dark-5)

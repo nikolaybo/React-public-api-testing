@@ -7,3 +7,9 @@ body {
   background: var(--mantine-color-body);
   color: var(--mantine-color-text);
 }
+
+/* In dark mode, force the global text color variable to pure white so every
+   Mantine component that reads --mantine-color-text inherits white text. */
+[data-mantine-color-scheme="dark"] {
+  --mantine-color-text: #fff;
+}
