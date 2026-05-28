@@ -26,6 +26,7 @@ const slides: Slide[] = [
     text: "Full request inspection with rich response visualization and timing.",
     ctaLabel: "Sign in",
     ctaTo: "/login",
+    ctaVariant: "secondary",
   },
   {
     heading: "Track your favorite endpoints",
@@ -61,6 +62,14 @@ const HomePage = () => {
                     to={slide.ctaTo}
                     size="md"
                     w="fit-content"
+                    classNames={
+                      slide.ctaVariant === "secondary"
+                        ? {
+                            root: classes.ctaRootSecondary,
+                            label: classes.ctaLabelSecondary,
+                          }
+                        : { root: classes.ctaRoot }
+                    }
                   >
                     {slide.ctaLabel}
                   </Button>

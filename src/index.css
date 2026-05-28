@@ -1,8 +1,9 @@
 :root {
-  color-scheme: light;
+  color-scheme: light dark;
 }
 
 body {
   margin: 0;
   background: var(--mantine-color-body);
+  color: var(--mantine-color-text);
 }
