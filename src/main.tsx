@@ -4,12 +4,14 @@ import "./index.css";
 import "@mantine/core/styles.css";
 import "@mantine/carousel/styles.css";
 import { RouterProvider } from "react-router";
-import { MantineProvider } from "@mantine/core";
+import { ColorSchemeScript, MantineProvider } from "@mantine/core";
 import { router } from "./routes/AppRoutes";
+import { theme } from "./theme";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <MantineProvider defaultColorScheme="light">
+    <ColorSchemeScript defaultColorScheme="light" />
+    <MantineProvider theme={theme} defaultColorScheme="light">
       <RouterProvider router={router} />
     </MantineProvider>
   </StrictMode>,

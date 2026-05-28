@@ -14,6 +14,7 @@ import {
 import { useDisclosure } from "@mantine/hooks";
 import { IconChevronDown } from "@tabler/icons-react";
 import { NavLink, Outlet, useLocation } from "react-router";
+import ColorSchemeToggle from "@/components/theme/ColorSchemeToggle";
 import { getFooterLinks, getHeaderTree } from "@/helpers/navigation.helper";
 import type { NavLinkItem, NavLinkNode } from "@/types/navigation";
 import classes from "./AppLayout.module.css";
@@ -94,6 +95,7 @@ export default function AppLayout() {
 
             <Group gap={5} visibleFrom="xs">
               {rightItems}
+              <ColorSchemeToggle />
             </Group>
 
             <Burger

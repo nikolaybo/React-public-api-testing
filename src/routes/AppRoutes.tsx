@@ -9,14 +9,14 @@ import PublicRoute from "./PublicRoute";
 import RoleRoute from "./RoleRoute";
 
 // Pages
-import HomePage from "@/pages/HomePage";
-import LoginPage from "@/pages/LoginPage";
-import NotFoundPage from "@/pages/NotFoundPage";
-import RegisterPage from "@/pages/RegisterPage";
-import PrivacyPage from "@/pages/PrivacyPage";
-import TermsPage from "@/pages/TermsPage";
-import AnalyticsPage from "@/pages/AnalyticsPage";
-import ReportsPage from "@/pages/ReportsPage";
+import HomePage from "@/pages/home/HomePage";
+import LoginPage from "@/pages/auth/LoginPage";
+import RegisterPage from "@/pages/auth/RegisterPage";
+import AnalyticsPage from "@/pages/dashboard/AnalyticsPage";
+import ReportsPage from "@/pages/dashboard/ReportsPage";
+import NotFoundPage from "@/pages/common/NotFoundPage";
+import PrivacyPage from "@/pages/common/PrivacyPage";
+import TermsPage from "@/pages/common/TermsPage";
 
 export const routes: RouteObject[] = [
   {
